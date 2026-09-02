@@ -39,10 +39,10 @@
     "message": "Disable logging to console"
   },
   "extensionDesc": {
-    "message": "Returns ability to see dislikes"
+    "message": "Filter video choices by visible engagement and keep a private session scorecard."
   },
   "extensionName": {
-    "message": "Return YouTube Dislike"
+    "message": "Zovo Gauge"
   },
   "extensionNameBeta": {
     "message": "Return YouTube Dislike Beta"

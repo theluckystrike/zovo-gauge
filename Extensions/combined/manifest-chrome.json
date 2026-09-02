@@ -5,24 +5,22 @@
   "version": "__RYD_VERSION__",
   "manifest_version": 3,
   "background": {
-    "service_worker": "ryd.background.js"
+    "service_worker": "zgq-worker.js"
   },
   "icons": {
-    "48": "icons/icon48.png",
-    "128": "icons/icon128.png"
+    "16": "icons/icon-gauge16.png",
+    "48": "icons/icon-gauge48.png",
+    "128": "icons/icon-gauge128.png"
   },
   "host_permissions": [
     "*://*.youtube.com/*",
-    "*://returnyoutubedislikeapi.com/*"
+    "https://zgubxqomnbmxgbdhvwja.supabase.co/*"
   ],
   "permissions": [
     "storage"
   ],
-  "optional_permissions": [
-    "identity"
-  ],
   "action": {
-    "default_popup": "popup.html"
+    "default_popup": "zgq-panel.html"
   },
   "content_scripts": [
     {
@@ -35,31 +33,15 @@
         "*://*.music.youtube.com/*"
       ],
       "js": [
-        "ryd.content-script.js"
+        "zgq-observer.js"
       ],
       "css": [
-        "content-style.css"
-      ]
-    }
-  ],
-  "externally_connectable": {
-    "matches": [
-      "*://*.youtube.com/*"
-    ]
-  },
-  "web_accessible_resources": [
-    {
-      "resources": [
-        "ryd.script.js",
-        "menu-fixer.js"
-      ],
-      "matches": [
-        "*://*.youtube.com/*"
+        "zgq-surface.css"
       ]
     }
   ],
   "options_ui": {
-    "page": "popup.html",
+    "page": "zgq-panel.html",
     "open_in_tab": false
   }
 }

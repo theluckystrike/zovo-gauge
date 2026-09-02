@@ -15,6 +15,7 @@ Website/dist/
 Website/_nuxt
 
 # local env files
+.env
 .env.local
 .env.*.local
 

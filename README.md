@@ -9,6 +9,23 @@
 
 Read this in other languages: [English](README.md), [العربية](READMEar.md), [Azərbaycan dili](READMEaz.md), [български](READMEbg.md), [繁體中文](READMEtw.md), [简体中文](READMEcn.md), [Danish](READMEda.md), [Deutsch](READMEde.md), [Español](READMEes.md), [Français](READMEfr.md), [Ελληνικά](READMEgr.md), [Magyar](READMEhu.md), [Bahasa Indonesia](READMEid.md), [日本語](READMEja.md), [한국어](READMEkr.md), [Nederlands](READMEnl.md), [Polski](READMEpl.md), [Português do Brasil](READMEpt_BR.md), [русский](READMEru.md), [Svenska](READMEsv.md), [Türkçe](READMEtr.md), [українська](READMEuk.md), [Tiếng Việt](READMEvi.md)
 
+# Gauge — DOM-only engagement filter
+
+Gauge is a GPL-3.0 fork of Return YouTube Dislike, packaged as a distinct
+pre-watch quality filter. It calculates likes-per-view only from numbers already
+rendered on the page, filters low-engagement thumbnails, estimates visible likes
+per day, and keeps a sortable browser-session ledger. It does not call the
+upstream dislike API.
+
+Complete modified source: https://github.com/theluckystrike/zovo-gauge
+
+See [CHANGES-ZOVO-GAUGE.md](CHANGES-ZOVO-GAUGE.md),
+[BUILDING-ZOVO-GAUGE.md](BUILDING-ZOVO-GAUGE.md), and the unchanged GPL-3.0
+[LICENSE](LICENSE). The paid convenience is not a technical restriction: anyone
+may rebuild this complete source with different feature defaults.
+
+## Upstream project
+
 # Return YouTube Dislike
 
 <p align="center">

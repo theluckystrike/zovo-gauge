@@ -1,8 +1,8 @@
 {
-  "name": "return-youtube-dislike",
-  "version": "4.0.4",
-  "description": "Chrome extension to return youtube dislikes",
-  "main": "ryd.content-script.js",
+  "name": "zovo-gauge",
+  "version": "1.0.0",
+  "description": "A DOM-only pre-watch engagement filter with a session-local score ledger.",
+  "main": "zgq-observer.js",
   "scripts": {
     "start": "echo To build for development, please use \"npm run dev\". To build for production, please use \"npm run build\".",
     "dev": "webpack --mode=development --watch",
@@ -11,6 +11,7 @@
     "build:live:userscript": "webpack --mode=production --config webpack.userscript.config.js --env liveTest=true",
     "build:live:extension": "webpack --mode=production --env liveTest=true",
     "test": "jest",
+    "test:gauge:e2e": "node scripts/gauge-smoke.mjs Extensions/Combined/dist/chrome",
     "test:e2e:artifacts": "node Extensions/e2e/hermetic-artifact-smoke.js",
     "test:e2e:systematic": "npm run build && npm run build:userscript && npm run test:e2e:artifacts && playwright test --config playwright.userscript.config.js",
     "test:e2e:userscript": "npm run build:userscript && playwright test --config playwright.userscript.config.js",
@@ -25,19 +26,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Anarios/return-youtube-dislike.git"
+    "url": "git+https://github.com/theluckystrike/zovo-gauge.git"
   },
   "keywords": [
-    "youtube",
-    "dislike",
-    "return",
-    "extension"
+    "engagement",
+    "quality-filter",
+    "local-first",
+    "browser-extension"
   ],
-  "author": "Anarios",
+  "author": "Anarios, Return YouTube Dislike contributors, and Zovo",
+  "license": "GPL-3.0-only",
   "bugs": {
-    "url": "https://github.com/Anarios/return-youtube-dislike/issues"
+    "url": "https://github.com/theluckystrike/zovo-gauge/issues"
   },
-  "homepage": "https://github.com/Anarios/return-youtube-dislike#readme",
+  "homepage": "https://github.com/theluckystrike/zovo-gauge#readme",
   "dependencies": {
     "country-code-lookup": "^0.1.3",
     "echarts": "^5.5.0",

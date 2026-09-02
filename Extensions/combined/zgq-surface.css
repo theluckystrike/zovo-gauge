@@ -1,0 +1,74 @@
+/* SPDX-License-Identifier: GPL-3.0-only */
+
+:where(ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, ytd-reel-item-renderer, yt-lockup-view-model) a:has(> .zgqGauge__chip) {
+  position: relative;
+}
+
+.zgqGauge__chip {
+  --zgq-ink: #f8fbff;
+  --zgq-accent: #0f766e;
+  position: absolute;
+  z-index: 8;
+  right: 8px;
+  top: 8px;
+  display: inline-flex;
+  min-height: 24px;
+  align-items: center;
+  padding: 0 9px;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--zgq-accent) 88%, #071b20);
+  box-shadow: 0 6px 18px rgba(3, 31, 37, 0.28);
+  color: var(--zgq-ink);
+  font: 700 11px/1 system-ui, sans-serif;
+  letter-spacing: 0.02em;
+  pointer-events: auto;
+}
+
+.zgqGauge__chip::after {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 8px);
+  width: max-content;
+  max-width: 248px;
+  padding: 9px 11px;
+  border-radius: 8px;
+  background: #071b20;
+  color: #f8fbff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.32);
+  content: attr(data-zgq-tooltip);
+  font: 500 12px/1.4 system-ui, sans-serif;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(4px);
+  transition: opacity 120ms ease, transform 120ms ease;
+}
+
+.zgqGauge__chip:hover::after,
+.zgqGauge__chip:focus-visible::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.zgqGauge--low {
+  opacity: 0.28 !important;
+  filter: grayscale(0.72) saturate(0.45);
+  transition: opacity 160ms ease, filter 160ms ease;
+}
+
+.zgqGauge--low:hover,
+.zgqGauge--low:focus-within {
+  opacity: 0.72 !important;
+  filter: none;
+}
+
+.zgqGauge--collapse {
+  display: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zgqGauge__chip::after,
+  .zgqGauge--low {
+    transition: none;
+  }
+}

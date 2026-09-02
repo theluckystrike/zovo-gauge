@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Gauge</title>
+    <link rel="stylesheet" href="gauge-panel.css" />
+  </head>
+  <body data-initial-tab="ranking">
+    <main class="zgqPanel">
+      <header class="zgqPanel__topbar">
+        <div class="zgqPanel__mark" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+        <div>
+          <p class="zgqPanel__eyebrow">PRE-WATCH SIGNAL</p>
+          <h1>Gauge</h1>
+        </div>
+        <span class="zgqPanel__privacy">LOCAL</span>
+      </header>
+
+      <section class="zgqPanel__hero" aria-labelledby="sessionLabel">
+        <p id="sessionLabel" class="zgqPanel__label">SEEN THIS SESSION</p>
+        <strong id="ledgerCount" class="zgqPanel__metric" role="status" aria-live="polite">0</strong>
+        <p id="heroSummary" class="zgqPanel__support">Scores appear as visible numbers are encountered.</p>
+      </section>
+
+      <section class="zgqPanel__section" aria-labelledby="filterLabel">
+        <div class="zgqPanel__sectionHead">
+          <p id="filterLabel" class="zgqPanel__label">QUALITY FLOOR</p>
+          <output id="thresholdOutput" for="threshold">2.5%</output>
+        </div>
+        <input id="threshold" type="range" min="0" max="10" step="0.1" value="2.5" aria-label="Engagement threshold" />
+        <div class="zgqPanel__scale" aria-hidden="true"><span>0%</span><span>10%</span></div>
+        <div class="zgqPanel__modes" role="radiogroup" aria-label="Below-threshold treatment">
+          <button id="modeDim" type="button" role="radio" aria-checked="true">Dim</button>
+          <button id="modeCollapse" type="button" role="radio" aria-checked="false">Collapse <span>PRO</span></button>
+        </div>
+        <p id="settingsStatus" class="zgqPanel__hint" role="status" aria-live="polite">Below-floor choices stay visible but quiet.</p>
+      </section>
+
+      <div class="zgqPanel__tabs" role="tablist" aria-label="Popup section">
+        <button id="rankingTab" type="button" role="tab" aria-selected="true" aria-controls="rankingPanel" data-label="Ranking">Ranking</button>
+        <button id="proTab" type="button" role="tab" aria-selected="false" aria-controls="proPanel" data-label="Collapse Pro">Collapse Pro</button>
+      </div>
+
+      <section id="rankingPanel" class="zgqPanel__section zgqPanel__ledger" role="tabpanel" aria-labelledby="rankingTab">
+        <div class="zgqPanel__sectionHead">
+          <p id="ledgerLabel" class="zgqPanel__label">SESSION RANKING</p>
+          <label class="zgqPanel__sort">SORT
+            <select id="sortBy" aria-label="Sort session ranking">
+              <option value="engagement">Engagement</option>
+              <option value="velocity">Likes / day</option>
+              <option value="recent">Recently seen</option>
+            </select>
+          </label>
+        </div>
+        <ol id="ledgerList" class="zgqPanel__list"></ol>
+        <div id="emptyState" class="zgqPanel__empty">
+          <div class="zgqPanel__emptyArt" aria-hidden="true"><i></i><i></i><i></i></div>
+          <strong>Your gauge is warming up</strong>
+          <p>Browse normally. A score is kept only after likes and views are visible on the page.</p>
+        </div>
+      </section>
+
+      <section id="proPanel" class="zgqPanel__licence" role="tabpanel" aria-labelledby="proTab" hidden>
+        <div class="zgqPanel__sectionHead">
+          <p id="licenceLabel" class="zgqPanel__label">COLLAPSE MODE</p>
+          <span id="licenceBadge" class="zgqPanel__badge">OPTIONAL</span>
+        </div>
+        <p id="licenceStatus" class="zgqPanel__hint">Dim is free. Activate a key to remove low-signal choices completely.</p>
+        <div id="licenceForm" class="zgqPanel__licenceForm">
+          <input id="licenceKey" type="text" maxlength="64" autocomplete="off" aria-label="Licence key" placeholder="Key from your receipt" />
+          <button id="activateLicence" type="button">Activate</button>
+        </div>
+        <button id="pricing" class="zgqPanel__pricing" type="button">View Pro pricing</button>
+      </section>
+
+      <footer>
+        <span>DOM-only scoring</span>
+        <span>No dislike service</span>
+        <span>Session storage</span>
+      </footer>
+    </main>
+    <script src="zgq-panel.js"></script>
+  </body>
+</html>

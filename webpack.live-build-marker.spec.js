@@ -32,7 +32,7 @@ describe("live build marker", () => {
     [
       "extension",
       createExtensionConfig,
-      ["chrome/live-build.json", "firefox/live-build.json", "safari/live-build.json"],
+      ["chrome/live-build.json"],
     ],
   ])("binds one exact nonce into the %s live bundle and its marker file", (_runtime, createConfig, assetNames) => {
     const identity = liveIdentity(createConfig({ liveTest: true }, { mode: "production" }));

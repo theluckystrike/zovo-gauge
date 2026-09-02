@@ -64,9 +64,13 @@ try {
   if (!tooltip?.includes("50 visible likes/day")) throw new Error(`unexpected tooltip: ${tooltip}`);
 
   let extensionId = null;
+  let serviceWorker = null;
   for (let attempt = 0; attempt < 30 && !extensionId; attempt += 1) {
     const worker = context.serviceWorkers().find((candidate) => candidate.url().endsWith("/zgq-worker.js"));
-    if (worker) extensionId = new URL(worker.url()).host;
+    if (worker) {
+      serviceWorker = worker;
+      extensionId = new URL(worker.url()).host;
+    }
     if (!extensionId) await page.waitForTimeout(100);
   }
   if (!extensionId) throw new Error("service worker did not register");
@@ -88,6 +92,16 @@ try {
   await panel.locator("#licenceKey").fill("not-a-key");
   await panel.locator("#activateLicence").click();
   await panel.waitForFunction(() => document.querySelector("#licenceStatus")?.textContent.includes("format"));
+  await serviceWorker.evaluate(() => chrome.storage.local.set({
+    "zgqGauge.licence.v1": {
+      key: "ZOVO-AB12-CD34-EF56-GH78",
+      valid: true,
+      activatedAt: Date.now(),
+    },
+  }));
+  await panel.reload({ waitUntil: "load" });
+  await panel.locator("#modeCollapse").click();
+  await page.waitForFunction(() => document.querySelector("#measured-card")?.classList.contains("zgqGauge--collapse"));
 
   console.log(JSON.stringify({
     chip: measuredText,
@@ -97,6 +111,7 @@ try {
     thresholdDimmed: true,
     collapseGuarded: true,
     invalidKeyRejectedBeforeNetwork: true,
+    licensedCollapseApplied: true,
   }, null, 2));
 } finally {
   await context?.close().catch(() => {});

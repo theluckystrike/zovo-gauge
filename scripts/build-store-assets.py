@@ -39,6 +39,7 @@ def screenshot(source_path, filename, dark=False):
     ink = (237, 255, 252) if dark else (14, 52, 56)
     muted = (159, 190, 189) if dark else (82, 111, 113)
     accent = (45, 212, 191) if dark else (15, 118, 110)
+    feature_surface = (14, 54, 57) if dark else (222, 243, 239)
     canvas = Image.new("RGBA", (1280, 800), ground)
     draw = ImageDraw.Draw(canvas)
     draw.ellipse((860, -280, 1420, 280), fill=(*accent, 20))
@@ -54,7 +55,7 @@ def screenshot(source_path, filename, dark=False):
     ]
     y = 390
     for value, label in features:
-        draw.rounded_rectangle((80, y, 650, y + 82), radius=16, outline=(*accent, 85), width=2, fill=(*accent, 16))
+        draw.rounded_rectangle((80, y, 650, y + 82), radius=16, outline=accent, width=2, fill=feature_surface)
         draw.text((104, y + 17), value, font=font(24, True), fill=accent)
         draw.text((246, y + 23), label, font=font(20), fill=ink)
         y += 96

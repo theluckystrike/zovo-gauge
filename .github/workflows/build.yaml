@@ -36,9 +36,13 @@ on:
       - "playwright*.js"
       - "webpack*.js"
 
+permissions:
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-24.04
+    timeout-minutes: 15
 
     steps:
       - name: Checkout repository

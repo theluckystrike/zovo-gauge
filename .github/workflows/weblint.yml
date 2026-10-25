@@ -14,9 +14,13 @@ on:
     paths:
       - Website/**
 
+permissions:
+  contents: read
+
 jobs:
   weblint:
     runs-on: ubuntu-24.04
+    timeout-minutes: 15
 
     steps:
       - name: Checkout repository

@@ -4,9 +4,13 @@ on:
   issue_comment:
     types: [created]
 
+permissions:
+  contents: read
+
 jobs:
   assign-commenter:
     runs-on: ubuntu-24.04
+    timeout-minutes: 15
     if: |
       contains(github.event.comment.body, '/assignme') ||
       contains(github.event.comment.body, '/assign me')
@@ -22,6 +26,7 @@ jobs:
 
   request-issue-framing-improvement:
     runs-on: ubuntu-24.04
+    timeout-minutes: 15
     if: |
       contains(github.event.comment.body, '/improve') && (
         github.event.comment.author_association == 'OWNER' ||
@@ -40,6 +45,7 @@ jobs:
 
   add-duplicate-label:
     runs-on: ubuntu-24.04
+    timeout-minutes: 15
     if: |
       contains(github.event.comment.body, '/duplicate') && (
         github.event.comment.author_association == 'OWNER' ||

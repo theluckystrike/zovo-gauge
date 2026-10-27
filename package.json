@@ -51,7 +51,7 @@
     "@babel/core": "^7.23.5",
     "@babel/preset-env": "^7.23.5",
     "@babel/runtime": "^7.23.5",
-    "@playwright/test": "1.62.0",
+    "@playwright/test": "1.64.1",
     "babel-loader": "^10.0.0",
     "babel-plugin-rewire": "^1.2.0",
     "copy-webpack-plugin": "^11.0.0",
